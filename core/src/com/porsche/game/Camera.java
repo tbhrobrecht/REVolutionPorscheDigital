@@ -15,11 +15,12 @@ public class Camera {
      * Method used to recenter the map screen interface
      * @param width used to set the width of the screen
      * @param height used to set the height of the screen
+     * @param zoom used to set the zoom of the screen, the higher the value, the more zoomed
      */
-    protected void recenter(float width, float height) {
+    protected void recenter(float width, float height, float zoom) {
         camera.setToOrtho(false, width, height);
         camera.position.set(screenWidth / 2f, screenHeight / 2f, 0);
-        camera.zoom = 1.85f;
+        camera.zoom = zoom;
         camera.update();
     }
 
@@ -27,9 +28,9 @@ public class Camera {
      * Method that handles the user's keyboard input
      * Capable of shifting the camera's position and zoom
      */
-    protected void handleCameraInput() {
+    protected void handleCameraInput(float zoom) {
         float cameraSpeed = 400f * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Input.Keys.R)) recenter(screenWidth, screenHeight);
+        if (Gdx.input.isKeyPressed(Input.Keys.R)) recenter(screenWidth, screenHeight, zoom);
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) camera.position.y += cameraSpeed;
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) camera.position.y -= cameraSpeed;
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) camera.position.x -= cameraSpeed;

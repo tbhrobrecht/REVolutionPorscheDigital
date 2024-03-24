@@ -22,6 +22,7 @@ public class MapScreen extends Camera implements Screen {
     private final Texture map = new Texture(Gdx.files.internal("map.jpeg"));
     private final Stage stageMapScreen;
     private Music mapScreenBackgroundMusic;
+    private final float cameraZoom = 1.85f;
 
     public MapScreen(final Main game) {
         Skin skin = new Skin(Gdx.files.internal("craft/craftacular-ui.json"));
@@ -79,7 +80,7 @@ public class MapScreen extends Camera implements Screen {
 
     @Override
     public void show() {
-        recenter(screenWidth, screenHeight);
+        recenter(screenWidth, screenHeight, cameraZoom);
         mapScreenBackgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/MapScreenBackground.wav"));
         mapScreenBackgroundMusic.setLooping(true);
         mapScreenBackgroundMusic.play();
@@ -100,7 +101,7 @@ public class MapScreen extends Camera implements Screen {
         spriteBatch.draw(map, (-map.getWidth() / 2f) + screenWidth / 2f, (-map.getHeight() / 2f) + screenHeight / 2f);
         spriteBatch.end();
 
-        handleCameraInput();
+        handleCameraInput(cameraZoom);
         drawStage();
     }
 
@@ -115,7 +116,7 @@ public class MapScreen extends Camera implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        recenter(width, height);
+        recenter(width, height, cameraZoom);
     }
 
     @Override
