@@ -19,7 +19,7 @@ import com.porsche.game.Main;
 public class MapScreen extends Camera implements Screen {
 
     private final SpriteBatch spriteBatch = new SpriteBatch();
-    private final Texture map = new Texture(Gdx.files.internal("map.jpeg"));
+    private final Texture map = new Texture(Gdx.files.internal("backgrounds/map.jpeg"));
     private final Stage stageMapScreen;
     private Music mapScreenBackgroundMusic;
     private final float cameraZoom = 1.85f;
@@ -61,7 +61,7 @@ public class MapScreen extends Camera implements Screen {
         exitButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.goToIntroScreen();
+                Gdx.app.exit();
             }
         });
 
@@ -132,12 +132,16 @@ public class MapScreen extends Camera implements Screen {
     @Override
     public void hide() {
         mapScreenBackgroundMusic.stop();
+        mapScreenBackgroundMusic.dispose();
+        stageMapScreen.dispose();
+        Gdx.input.setInputProcessor(null);
     }
 
     @Override
     public void dispose() {
-        mapScreenBackgroundMusic.dispose();
+        if (mapScreenBackgroundMusic != null) mapScreenBackgroundMusic.dispose();
         spriteBatch.dispose();
         stageMapScreen.dispose();
+        Gdx.input.setInputProcessor(null);
     }
 }
