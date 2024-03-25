@@ -19,6 +19,8 @@ public class Characters {
     private final TextureRegion merchantSolo = new TextureRegion(merchantGroup2Sheet, 0, 0, merchantSoloWidth, merchantGroup2Height);
     private final TextureRegion merchantDuo = new TextureRegion(merchantGroup2Sheet, merchantSoloWidth, 0, merchantDuoWidth, merchantGroup2Height);
     private final TextureRegion merchantDuoProfile = new TextureRegion(merchantGroup2Sheet, merchantSoloWidth, 0, merchantDuoWidth, merchantGroup2ProfileHeight);
+    private final TextureRegion merchantDuoLeftProfile = new TextureRegion(merchantGroup2Sheet, merchantSoloWidth, 0, merchantDuoWidth / 2, merchantGroup2ProfileHeight);
+    private final TextureRegion merchantDuoRightProfile = new TextureRegion(merchantGroup2Sheet, merchantSoloWidth + merchantDuoWidth / 2, 0, merchantDuoWidth / 2, merchantGroup2ProfileHeight);
 
     public void renderMerchantGroup1(SpriteBatch spriteBatch, float x, float y, float magnifier) {
         spriteBatch.draw(merchantGroup1, x, y, merchantGroup1Width * magnifier, merchantGroup1Height * magnifier);
@@ -30,5 +32,13 @@ public class Characters {
 
     public void renderMerchantDuo(SpriteBatch spriteBatch, float x, float y, float magnifier) {
         spriteBatch.draw(merchantDuo, x, y, merchantDuoWidth * magnifier, merchantGroup2Height * magnifier);
+    }
+
+    public void renderMerchantDuoLeftProfile(SpriteBatch spriteBatch, float x, float y, float magnifier) {
+        spriteBatch.draw(merchantDuoLeftProfile, x, y, merchantDuoWidth / 2f * magnifier, 0.34f * merchantGroup2Height * magnifier);
+    }
+
+    public void renderMerchantDuoRightProfile(SpriteBatch spriteBatch, float x, float y, float magnifier) {
+        spriteBatch.draw(merchantDuoRightProfile, x, y, merchantDuoWidth / 2f * magnifier, 0.34f * merchantGroup2Height * magnifier);
     }
 }
