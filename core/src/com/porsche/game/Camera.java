@@ -25,6 +25,19 @@ public class Camera {
     }
 
     /**
+     * Method sets the positioning of the camera
+     * @param x used to set the x coordinate
+     * @param y used to set the y coordinate
+     * @param zoom used to set the zoom of the screen
+     */
+    protected void setPosition(float x, float y, float zoom) {
+        camera.setToOrtho(false, screenWidth, screenHeight);
+        camera.position.set(x, y, 0);
+        camera.zoom = zoom;
+        camera.update();
+    }
+
+    /**
      * Method that handles the user's keyboard input
      * Capable of shifting the camera's position and zoom
      */
@@ -41,5 +54,12 @@ public class Camera {
         if (Gdx.input.isKeyPressed(Input.Keys.M)) camera.zoom += cameraZoom;
         if (Gdx.input.isKeyPressed(Input.Keys.N)) camera.zoom -= cameraZoom;
         camera.update();
+
+        if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+            System.out.println(camera.position.x);
+            System.out.println(camera.position.y);
+            System.out.println(screenWidth);
+            System.out.println(screenHeight);
+        }
     }
 }
