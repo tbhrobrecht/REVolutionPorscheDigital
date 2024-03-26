@@ -10,8 +10,10 @@ import com.porsche.game.Stories;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
+/**
+ * ThurnAndTaxisCastleAdventure; the outline is complete, the story is just missing snippets of content
+ */
 public class ThurnAndTaxisCastleAdventure extends Stories implements Screen {
     private final Main game;
     private final Texture background = new Texture(Gdx.files.internal("backgrounds/regensburg.jpg"));

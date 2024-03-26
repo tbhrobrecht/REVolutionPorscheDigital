@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+/**
+ * This class is used to draw the dialogue for the characters within the stories
+ */
 public class Dialogue {
     private ShapeRenderer shapeRenderer;
     private float filterTransparency;

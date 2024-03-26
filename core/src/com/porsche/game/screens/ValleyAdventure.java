@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * ValleyAdventure; the outline is complete, the story is just missing snippets of content
+ */
 public class ValleyAdventure extends Stories implements Screen {
     private final Main game;
     private final Texture background = new Texture(Gdx.files.internal("backgrounds/valley.jpg"));

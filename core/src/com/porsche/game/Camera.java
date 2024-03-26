@@ -2,7 +2,9 @@ package com.porsche.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 
 public class Camera {
@@ -10,6 +12,8 @@ public class Camera {
     protected final OrthographicCamera camera = new OrthographicCamera();
     protected final float screenWidth = Gdx.graphics.getWidth();
     protected final float screenHeight = Gdx.graphics.getHeight();
+    protected final ShapeRenderer shapeRenderer = new ShapeRenderer();
+    protected int x, y;
 
     /**
      * Method used to recenter the map screen interface
@@ -54,7 +58,12 @@ public class Camera {
         if (Gdx.input.isKeyPressed(Input.Keys.M)) camera.zoom += cameraZoom;
         if (Gdx.input.isKeyPressed(Input.Keys.N)) camera.zoom -= cameraZoom;
         camera.update();
+    }
 
+    /**
+     * Method used as a tool to locate the coordinates when creating new stories
+     */
+    protected void placer() {
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
             System.out.println(camera.position.x);
             System.out.println(camera.position.y);
@@ -62,5 +71,28 @@ public class Camera {
             System.out.println(screenHeight);
             System.out.println(camera.zoom);
         }
+
+        int move = 5;
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) y += move;
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) x -= move;
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) y -= move;
+        if (Gdx.input.isKeyPressed(Input.Keys.D)) x += move;
+        pointer(x, y);
+        if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+            System.out.println(x);
+            System.out.println(y);
+        }
+    }
+
+    /**
+     * Method used as a tool to point towards the coordinates of objects on the screen
+     * @param x determines the x coordinate
+     * @param y determines the y coordinate
+     */
+    protected void pointer(int x, int y) {
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(Color.BLACK);
+        shapeRenderer.rect(x, y, screenWidth * 0.1f, screenHeight * 0.1f);
+        shapeRenderer.end();
     }
 }
