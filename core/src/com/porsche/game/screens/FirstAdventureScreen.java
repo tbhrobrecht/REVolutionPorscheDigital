@@ -33,7 +33,6 @@ public class FirstAdventureScreen extends Stories implements Screen {
 
     public FirstAdventureScreen(Main game) {
         this.game = game;
-        Gdx.input.setInputProcessor(null);
     }
 
     @Override
@@ -68,12 +67,11 @@ public class FirstAdventureScreen extends Stories implements Screen {
 
     @Override
     public void hide() {
-        Gdx.input.setInputProcessor(null);
+
     }
 
     @Override
     public void dispose() {
-        Gdx.input.setInputProcessor(null);
         backgroundSpritebatch.dispose();
         characterSpritebatch.dispose();
         merchantDuoLeftProfileSpritebatch.dispose();

@@ -10,7 +10,6 @@ import com.porsche.game.Stories;
 
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.Queue;
 
 public class DanubeAdventure extends Stories implements Screen {
@@ -34,17 +33,16 @@ public class DanubeAdventure extends Stories implements Screen {
                     "the splash of\noars and the gentle lap of water against boats.",
             "Lastly, the Danube is a river of romance.",
             "Knights and princesses would stroll by its banks,\nand minstrels would sing love songs. It's as\nif the river itself whispered love stories to\neveryone passing by.",
-            "There are thousands of rivers on this continent, yet\nnone quite flow like this one.", ""};
+            "There are thousands of rivers on this continent, yet\nnone quite flow like this one."};
     private final String[] characterNamesArray = {"Johannes", "Christopher", "Johannes", "Christopher", "Johannes",
             "Tommy", "Christopher", "Tommy", "Johannes", "Christopher", "Tommy", "Johannes", "Tommy", "Johannes", "Christopher",
-            "Christopher", "Christopher", "Johannes", ""};
+            "Christopher", "Christopher", "Johannes"};
     private final Queue<String> dialogue = new LinkedList<>(Arrays.asList(dialogueArray));
     private final Queue<String> characterNames = new LinkedList<>(Arrays.asList(characterNamesArray));
 
 
     public DanubeAdventure(Main game) {
         this.game = game;
-        Gdx.input.setInputProcessor(null);
     }
 
     @Override

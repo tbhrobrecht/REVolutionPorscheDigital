@@ -134,7 +134,6 @@ public class MapScreen extends Camera implements Screen {
         mapScreenBackgroundMusic.stop();
         mapScreenBackgroundMusic.dispose();
         stageMapScreen.dispose();
-        Gdx.input.setInputProcessor(null);
     }
 
     @Override
@@ -142,6 +141,5 @@ public class MapScreen extends Camera implements Screen {
         if (mapScreenBackgroundMusic != null) mapScreenBackgroundMusic.dispose();
         spriteBatch.dispose();
         stageMapScreen.dispose();
-        Gdx.input.setInputProcessor(null);
     }
 }

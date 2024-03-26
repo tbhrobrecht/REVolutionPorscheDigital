@@ -78,12 +78,10 @@ public class IntroScreen extends Camera implements Screen {
 
     @Override
     public void hide() {
-        Gdx.input.setInputProcessor(null);
     }
 
     @Override
     public void dispose() {
-        Gdx.input.setInputProcessor(null);
         background.dispose();
         spriteBatch.dispose();
     }
