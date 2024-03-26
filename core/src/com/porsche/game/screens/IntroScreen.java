@@ -63,6 +63,14 @@ public class IntroScreen extends Camera implements Screen {
             game.goToDanubeAdventure();
             handleInputTimer = 0f;
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUM_3) && handleInputTimer >= 1f) {
+            game.goToThurnAndTaxisCastleAdventure();
+            handleInputTimer = 0f;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUM_4) && handleInputTimer >= 1f) {
+            game.goToValleyAdventure();
+            handleInputTimer = 0f;
+        }
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE) && handleInputTimer >= 1f) {
             game.goToMapScreen();
             handleInputTimer = 0f;

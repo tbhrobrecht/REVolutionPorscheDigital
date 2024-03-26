@@ -1,10 +1,7 @@
 package com.porsche.game;
 
 import com.badlogic.gdx.Game;
-import com.porsche.game.screens.DanubeAdventure;
-import com.porsche.game.screens.FirstAdventureScreen;
-import com.porsche.game.screens.IntroScreen;
-import com.porsche.game.screens.MapScreen;
+import com.porsche.game.screens.*;
 
 public class Main extends Game {
 
@@ -12,6 +9,8 @@ public class Main extends Game {
 	private IntroScreen introScreen;
 	private FirstAdventureScreen firstAdventureScreen;
 	private DanubeAdventure danubeAdventure;
+	private ThurnAndTaxisCastleAdventure thurnAndTaxisCastleAdventure;
+	private ValleyAdventure valleyAdventure;
 
 	@Override
 	public void create() {
@@ -19,6 +18,9 @@ public class Main extends Game {
 		introScreen = new IntroScreen(this);
 		firstAdventureScreen = new FirstAdventureScreen(this);
 		danubeAdventure = new DanubeAdventure(this);
+		thurnAndTaxisCastleAdventure = new ThurnAndTaxisCastleAdventure(this);
+		valleyAdventure = new ValleyAdventure(this);
+
 		setScreen(mapScreen);
 	}
 
@@ -38,4 +40,8 @@ public class Main extends Game {
 	}
 
 	public void goToDanubeAdventure() {this.setScreen(danubeAdventure);}
+
+	public void	goToThurnAndTaxisCastleAdventure() {this.setScreen(thurnAndTaxisCastleAdventure);}
+
+	public void goToValleyAdventure() {this.setScreen(valleyAdventure);}
 }
