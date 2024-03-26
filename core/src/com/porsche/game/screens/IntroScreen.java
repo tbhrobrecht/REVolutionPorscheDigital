@@ -55,8 +55,16 @@ public class IntroScreen extends Camera implements Screen {
         handleCameraInput(cameraZoom);
 
         handleInputTimer += Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Input.Keys.A) && handleInputTimer >= 1f) {
-            game.goToNewFirstAdventureScreen();
+        if (Gdx.input.isKeyPressed(Input.Keys.NUM_1) && handleInputTimer >= 1f) {
+            game.goToFirstAdventureScreen();
+            handleInputTimer = 0f;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUM_2) && handleInputTimer >= 1f) {
+            game.goToDanubeAdventure();
+            handleInputTimer = 0f;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE) && handleInputTimer >= 1f) {
+            game.goToMapScreen();
             handleInputTimer = 0f;
         }
     }

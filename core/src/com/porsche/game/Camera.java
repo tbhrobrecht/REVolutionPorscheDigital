@@ -60,6 +60,7 @@ public class Camera {
             System.out.println(camera.position.y);
             System.out.println(screenWidth);
             System.out.println(screenHeight);
+            System.out.println(camera.zoom);
         }
     }
 }
