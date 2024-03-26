@@ -5,12 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.porsche.game.Main;
-import com.porsche.game.Speaker;
 import com.porsche.game.Stories;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class DanubeAdventure extends Stories implements Screen {
     private final Main game;
@@ -37,18 +34,18 @@ public class DanubeAdventure extends Stories implements Screen {
     private final String[] characterNamesArray = {"Johannes", "Christopher", "Johannes", "Christopher", "Johannes",
             "Tommy", "Christopher", "Tommy", "Johannes", "Christopher", "Tommy", "Johannes", "Tommy", "Johannes", "Christopher",
             "Christopher", "Christopher", "Johannes"};
-    private final Queue<String> dialogue = new LinkedList<>(Arrays.asList(dialogueArray));
-    private final Queue<String> characterNames = new LinkedList<>(Arrays.asList(characterNamesArray));
+    private final List<String> dialogue = new ArrayList<>(Arrays.asList(dialogueArray));
+    private final List<String> characterNames = new ArrayList<>(Arrays.asList(characterNamesArray));
 
 
     public DanubeAdventure(Main game) {
         this.game = game;
+        setFonts();
     }
 
     @Override
     public void show() {
         setPosition(screenWidth * 0.5f, screenHeight * 0.4f, 3.2f);
-        setFonts();
     }
 
     @Override

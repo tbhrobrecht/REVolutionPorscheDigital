@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.List;
 import java.util.Objects;
-import java.util.Queue;
 
 /**
  * Class meant to act as the blueprint for creating future stories
@@ -28,7 +28,8 @@ public class Stories extends Camera {
     protected final Dialogue filter = new Dialogue(0.25f, 0.6f);
     protected Speaker currentSpeaker = Speaker.NONE;
     protected float timer = 0f;
-
+    protected int storyIndex = 0;
+    protected int storyLength;
     protected void setFonts() {
         fontName.getData().setScale(18 / fontName.getCapHeight());
         fontName.setColor(Color.BLACK);
@@ -52,24 +53,29 @@ public class Stories extends Camera {
         filter.renderTextBubble();
     }
 
-    protected void renderDialogue(Queue<String> dialogue, Queue<String> characterNames) {
+    protected void renderDialogue(List<String> dialogue, List<String> characterNames) {
+        storyLength = dialogue.size();
         timer += Gdx.graphics.getDeltaTime();
 
-        if (!dialogue.isEmpty()) {
-            if (Gdx.input.isKeyPressed(Input.Keys.ENTER) && timer >= 0.2f) {
-                currentCharacter = characterNames.poll();
-                sentence = dialogue.poll();
-                if (Objects.equals(currentCharacter, "Christopher")) {
-                    currentSpeaker = Speaker.CHRISTOPHER;
-                } else if (Objects.equals(currentCharacter, "Johannes")) {
-                    currentSpeaker = Speaker.JOHANNES;
-                } else if (Objects.equals(currentCharacter, "Tommy")) {
-                    currentSpeaker = Speaker.TOMMY;
-                } else {
-                    currentSpeaker = Speaker.NONE;
-                }
-                timer = 0f;
+        if (Gdx.input.isKeyPressed(Input.Keys.ENTER) && timer >= 0.2f) {
+            currentCharacter = characterNames.get(storyIndex);
+            sentence = dialogue.get(storyIndex);
+            if (Objects.equals(currentCharacter, "Christopher")) {
+                currentSpeaker = Speaker.CHRISTOPHER;
+            } else if (Objects.equals(currentCharacter, "Johannes")) {
+                currentSpeaker = Speaker.JOHANNES;
+            } else if (Objects.equals(currentCharacter, "Tommy")) {
+                currentSpeaker = Speaker.TOMMY;
+            } else {
+                currentSpeaker = Speaker.NONE;
             }
+
+            if (storyIndex < storyLength - 1) {
+                storyIndex++;
+            } else {
+                storyIndex = 0;
+            }
+            timer = 0f;
         }
 
         if (currentSpeaker == Speaker.CHRISTOPHER) {

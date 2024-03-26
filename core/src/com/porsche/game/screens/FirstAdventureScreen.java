@@ -8,7 +8,7 @@ import com.porsche.game.*;
 
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 public class FirstAdventureScreen extends Stories implements Screen {
     private final Main game;
@@ -28,17 +28,17 @@ public class FirstAdventureScreen extends Stories implements Screen {
             "You have a deal, merchants. I'll see you at noon."};
     private final String[] characterNamesArray = {"Christopher", "Johannes", "Christopher", "Johannes", "Tommy", "Christopher",
     "Tommy", "Johannes", "Tommy", "Christopher", "Tommy"};
-    private final Queue<String> dialogue = new LinkedList<>(Arrays.asList(dialogueArray));
-    private final Queue<String> characterNames = new LinkedList<>(Arrays.asList(characterNamesArray));
+    private final List<String> dialogue = new LinkedList<>(Arrays.asList(dialogueArray));
+    private final List<String> characterNames = new LinkedList<>(Arrays.asList(characterNamesArray));
 
     public FirstAdventureScreen(Main game) {
         this.game = game;
+        setFonts();
     }
 
     @Override
     public void show() {
         setPosition(screenWidth * 0.7f, screenHeight * 0.3f, 1f);
-        setFonts();
     }
 
     @Override
